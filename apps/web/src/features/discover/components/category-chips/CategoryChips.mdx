@@ -1,0 +1,14 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as CategoryChipsStories from './CategoryChips.stories';
+
+<Meta of={CategoryChipsStories} />
+
+# CategoryChips
+
+Quick category toggles above the Discover results. Only categories that
+have events (or are already selected) are shown, so every chip leads
+somewhere. Without counts, every category is offered.
+
+<ArgTypes of={CategoryChipsStories} />
+
+<Stories />

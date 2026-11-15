@@ -1,0 +1,16 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as DashboardStatsStories from './DashboardStats.stories';
+
+<Meta of={DashboardStatsStories} />
+
+# DashboardStats
+
+Organizer summary tiles. Registration and availability totals only count
+published events that have not started (drafts and canceled events are
+excluded so the numbers reflect sellable places).
+
+## Props
+
+<ArgTypes of={DashboardStatsStories} />
+
+<Stories />

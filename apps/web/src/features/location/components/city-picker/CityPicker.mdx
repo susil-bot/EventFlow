@@ -1,0 +1,20 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as CityPickerStories from './CityPicker.stories';
+
+<Meta of={CityPickerStories} />
+
+# CityPicker
+
+Modal for choosing the city that Discover is centred on.
+
+- **Search** matches the city name, former names (Bombay, Madras, Bangalore)
+  and the state; arrow keys and Enter pick a result.
+- **Detect my location** asks the browser for a coarse position only when
+  clicked, then snaps to the nearest supported city within 150 km. The
+  position never leaves the browser; only the city id is used.
+- **Popular cities** show how many upcoming events each one has.
+- **View all cities** appears only when there are non-popular cities.
+
+<ArgTypes of={CityPickerStories} />
+
+<Stories />

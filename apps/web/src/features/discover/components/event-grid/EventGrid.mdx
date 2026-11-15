@@ -1,0 +1,16 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EventGridStories from './EventGrid.stories';
+
+<Meta of={EventGridStories} />
+
+# EventGrid
+
+Responsive grid of `PosterCard`s: two columns on phones, three on tablets,
+four on wide screens. Rendered as a `<ul>` so screen readers announce the
+number of events.
+
+## Props
+
+<ArgTypes of={EventGridStories} />
+
+<Stories />

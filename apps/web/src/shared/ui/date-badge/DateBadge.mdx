@@ -1,0 +1,22 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as DateBadgeStories from './DateBadge.stories';
+
+<Meta of={DateBadgeStories} />
+
+# DateBadge
+
+Calendar-tile representation of a date (month over day). It is
+`aria-hidden`, so always render the full written date next to it. Use
+`getDateBadgeParts(event)` to compute parts in the event's time zone.
+
+## Usage
+
+```tsx
+<DateBadge {...getDateBadgeParts(event)} />
+```
+
+## Props
+
+<ArgTypes of={DateBadgeStories} />
+
+<Stories />

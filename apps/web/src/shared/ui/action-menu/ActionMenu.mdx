@@ -1,0 +1,19 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ActionMenuStories from './ActionMenu.stories';
+
+<Meta of={ActionMenuStories} />
+
+# ActionMenu
+
+The "···" button for secondary actions, as in the event editor's action bar
+(Unpublish, Cancel event). It follows the WAI-ARIA menu button pattern:
+
+- Click, Enter, Space or ↓ opens the menu and focuses the first item.
+- ↑/↓ move between items, Enter runs one, Escape closes and returns focus
+  to the button, and Tab closes it.
+- Destructive items use `tone: 'danger'`.
+- With no items it renders nothing, so pages can pass a computed list.
+
+<ArgTypes of={ActionMenuStories} />
+
+<Stories />

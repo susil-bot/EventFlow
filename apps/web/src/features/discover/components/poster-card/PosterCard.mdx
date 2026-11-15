@@ -1,0 +1,18 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as PosterCardStories from './PosterCard.stories';
+
+<Meta of={PosterCardStories} />
+
+# PosterCard
+
+Discover card: a tall cover (uploaded image or generated art) with a date
+strip ("Sun, 15 Nov", plus "onwards" for multi-session events), then the
+title, place, category and format, and the price.
+
+- Sold out, few places left and canceled show as a tag on the poster.
+- The title link stretches over the whole card, so each card is one link.
+- Distance ("290 km away") appears when Discover is filtered by a city.
+
+<ArgTypes of={PosterCardStories} />
+
+<Stories />

@@ -1,0 +1,19 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as AuthLayoutStories from './AuthLayout.stories';
+
+<Meta of={AuthLayoutStories} />
+
+# AuthLayout
+
+Split layout for sign-in and sign-up: decorative brand panel (hidden on small
+screens) and a centred form card.
+
+## Props
+
+<ArgTypes of={AuthLayoutStories} />
+
+## Stories
+
+<Canvas of={AuthLayoutStories.SignIn} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,32 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as VenueMapStories from './VenueMap.stories';
+
+<Meta of={VenueMapStories} />
+
+# VenueMap
+
+OpenStreetMap map (Leaflet) with the venue's pin. Used on the event page and,
+editable, in the event form's venue section.
+
+- **No API key.** Tiles come from OpenStreetMap (`VITE_MAP_TILE_URL` can point
+  at another tile server); the attribution link is always shown.
+- **Read-only** by default. Pass `onChange` to let people drag the pin or
+  click the map to move it; the value has six decimals (about 10 cm).
+- Without a `location` it shows `center` (e.g. the event's city), or all of
+  India, and no pin.
+- Scroll-wheel zoom is off so the page keeps scrolling over the map; use the
+  +/− buttons or pinch.
+- The pin is drawn in CSS, so no marker image is bundled.
+- Leaflet's own z-indexes are kept inside the map, so it never covers the
+  site header or the editor's sticky action bar.
+- **Accessibility:** the map is a labelled region and can be panned with the
+  keyboard. Dragging the pin is mouse/touch only, so the form pairs the map
+  with an address search, and the event page shows the venue as text and a
+  directions link.
+
+`directionsUrl(location)` builds a Google Maps directions link (a plain URL;
+no key).
+
+<ArgTypes of={VenueMapStories} />
+
+<Stories />

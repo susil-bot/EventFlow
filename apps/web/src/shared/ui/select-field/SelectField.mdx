@@ -1,0 +1,26 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SelectFieldStories from './SelectField.stories';
+
+<Meta of={SelectFieldStories} />
+
+# SelectField
+
+Labelled dropdown built on `Select` (custom list, keyboard accessible). Shares label, hint and error styles with
+`TextField` so forms look consistent.
+
+## Usage
+
+```tsx
+<SelectField
+  label="Time zone"
+  options={zones.map((zone) => ({ value: zone, label: zone }))}
+  value={timeZone}
+  onChange={(event) => setTimeZone(event.target.value)}
+/>
+```
+
+## Props
+
+<ArgTypes of={SelectFieldStories} />
+
+<Stories />

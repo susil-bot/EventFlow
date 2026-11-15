@@ -1,0 +1,27 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as RegistrationItemStories from './RegistrationItem.stories';
+
+<Meta of={RegistrationItemStories} />
+
+# RegistrationItem
+
+One row of the attendee dashboard. Must be rendered inside a `<ul>`.
+
+## Behavior
+
+- Active registrations show a **Registered** badge and a cancel action.
+- Canceled registrations are dimmed and labelled **Registration canceled** so
+  they are clearly distinguished from active ones.
+- If the organizer canceled the event, an **Event canceled** badge appears and
+  the cancel action is hidden.
+
+## Props
+
+<ArgTypes of={RegistrationItemStories} />
+
+## Stories
+
+<Canvas of={RegistrationItemStories.Active} />
+<Canvas of={RegistrationItemStories.RegistrationCanceled} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,21 @@
+# Keep the build context small and free of secrets. Dependencies are
+# installed inside the image from package-lock.json.
+**/node_modules
+**/dist
+**/coverage
+**/storybook-static
+**/.env
+**/.env.*
+!**/.env.example
+**/*.log
+.git
+.github
+.husky
+.agents
+.vscode
+.DS_Store
+logs
+apps/api/uploads
+Claude outputs
+*.zip
+*.tgz

@@ -1,0 +1,22 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as PublishDialogStories from './PublishDialog.stories';
+
+<Meta of={PublishDialogStories} />
+
+# PublishDialog
+
+The confirmation step before an event goes public, opened by **Publish…**
+in the editor. Publishing used to be a single click in the event list; now
+it always passes through this dialog.
+
+- **Go live:** _Now_, the _planned go-live_ time from the form's Publishing
+  section (when set), or _Pick a date and time_.
+- A new time is checked against the event's own time zone: it must be in
+  the future and before the event starts. The API checks the same rules.
+- Shows the address the event page will have.
+- `onConfirm(null)` publishes now; `onConfirm('2030-09-01T10:00')` schedules
+  it (wall-clock time in the event's zone).
+
+<ArgTypes of={PublishDialogStories} />
+
+<Stories />

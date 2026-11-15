@@ -1,0 +1,19 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as PhaseChipStories from './PhaseChip.stories';
+
+<Meta of={PhaseChipStories} />
+
+# PhaseChip
+
+Status of an event for the people who manage it (its organizer and admins):
+**Draft**, **Scheduled** (goes live later), **Live**, **Expired** (listing
+ended before the event), **Ended** or **Canceled**, with the go-live or
+listing-end time in the event's own time zone when there is one.
+
+Attendees never see it: the API only sends the times to staff, and pages
+only render the chip for them. Use `variant="overlay"` on top of a cover
+image (Discover cards, event page) and `inline` in tables.
+
+<ArgTypes of={PhaseChipStories} />
+
+<Stories />

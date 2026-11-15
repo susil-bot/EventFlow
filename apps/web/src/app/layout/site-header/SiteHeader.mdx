@@ -1,0 +1,22 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SiteHeaderStories from './SiteHeader.stories';
+
+<Meta of={SiteHeaderStories} />
+
+# SiteHeader
+
+Two-row header that replaced the sidebar.
+
+- **Row one:** EventFlow wordmark, search (goes to Discover for the current
+  city), the city button and the profile button: a person icon with "Sign in", or the
+  first name, which opens the account menu (details and Log out).
+- **Row two:** links for the signed-in role (Events for everyone; My tickets;
+  Dashboard and Create event; the admin pages), plus "List your event" for
+  visitors.
+- **Small screens:** row two and the account actions fold into a menu.
+
+Links are hidden by role for convenience only; the API enforces access.
+
+<ArgTypes of={SiteHeaderStories} />
+
+<Stories />

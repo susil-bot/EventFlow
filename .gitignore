@@ -1,0 +1,15 @@
+node_modules
+dist
+coverage
+storybook-static
+logs
+*.log
+.env
+.env.local
+.env.*.local
+!.env.example
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+# Uploaded promo images (local disk storage)
+apps/api/uploads

@@ -1,0 +1,25 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as AttendeeTableStories from './AttendeeTable.stories';
+
+<Meta of={AttendeeTableStories} />
+
+# AttendeeTable
+
+Lists an event's active registrations: name, email and registration time.
+Only rendered for the event's organizer — the API verifies ownership before
+returning any attendee data. Render empty states with `StateView`.
+
+## Usage
+
+```tsx
+<AttendeeTable
+  attendees={data.attendees}
+  caption={`Attendees for ${event.title}`}
+/>
+```
+
+## Props
+
+<ArgTypes of={AttendeeTableStories} />
+
+<Stories />

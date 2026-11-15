@@ -1,0 +1,27 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as OrganizerEventListStories from './OrganizerEventList.stories';
+
+<Meta of={OrganizerEventListStories} />
+
+# OrganizerEventList
+
+The organizer dashboard's list of events, in the style of a CMS content
+list. Each row shows:
+
+- the cover (or a calendar placeholder), the title (opens the editor, or the
+  event page once it can't be edited), category, format, start time and
+  "Updated 3 hours ago by Olivia Organizer";
+- registrations, capacity and places left, as the brief requires;
+- a compact status: **Live**, **Scheduled** with the go-live (Today 10:00,
+  Tomorrow, 15 Nov 2026), a pencil for **Draft**, **Listing ended**,
+  **Ended** or **Canceled**;
+- a "···" menu: Edit, Open in new tab, View event page or Preview, View
+  attendees.
+
+There are deliberately no publish, unpublish or cancel buttons here: those
+happen in the editor, which asks for confirmation first (Publish dialog,
+acknowledgement before canceling an event people registered for).
+
+<ArgTypes of={OrganizerEventListStories} />
+
+<Stories />

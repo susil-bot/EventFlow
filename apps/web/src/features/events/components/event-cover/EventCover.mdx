@@ -1,0 +1,36 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EventCoverStories from './EventCover.stories';
+
+<Meta of={EventCoverStories} />
+
+# EventCover
+
+Generated, decorative cover art used in place of uploaded images (image upload
+is out of MVP scope). Colours are derived from the event title so each event
+looks distinct and stable across pages.
+
+## Usage
+
+```tsx
+<EventCover
+  title={event.title}
+  size="hero"
+  muted={event.status === 'CANCELED'}
+/>
+```
+
+## Behavior
+
+- `thumb` is 16:9 for cards; `hero` is square with the title as a caption.
+- `muted` desaturates the art for canceled events.
+- Always `aria-hidden`; the title is rendered as real text elsewhere.
+
+## Props
+
+<ArgTypes of={EventCoverStories} />
+
+## Stories
+
+<Canvas of={EventCoverStories.Palette} />
+
+<Stories includePrimary={false} />

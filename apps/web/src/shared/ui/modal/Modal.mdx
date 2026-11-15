@@ -1,0 +1,14 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ModalStories from './Modal.stories';
+
+<Meta of={ModalStories} />
+
+# Modal
+
+Accessible dialog used by the city picker. Rendered in a portal, labelled by
+its title, keeps keyboard focus inside, closes on **Escape** or a click on the
+backdrop, locks page scrolling and returns focus to the control that opened it.
+
+<ArgTypes of={ModalStories} />
+
+<Stories />

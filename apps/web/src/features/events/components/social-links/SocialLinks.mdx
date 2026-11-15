@@ -1,0 +1,24 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SocialLinksStories from './SocialLinks.stories';
+
+<Meta of={SocialLinksStories} />
+
+# SocialLinks
+
+Round icon links to an event's website and social profiles.
+
+## Behavior
+
+- Opens each link in a new tab with `rel="noopener noreferrer"`.
+- Every link has an accessible name (the platform) because the icon has none.
+- Renders nothing when there are no links.
+
+## Props
+
+<ArgTypes of={SocialLinksStories} />
+
+## Stories
+
+<Canvas of={SocialLinksStories.AllPlatforms} />
+
+<Stories includePrimary={false} />

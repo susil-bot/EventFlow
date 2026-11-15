@@ -1,0 +1,41 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as InlineAlertStories from './InlineAlert.stories';
+
+<Meta of={InlineAlertStories} />
+
+# InlineAlert
+
+A message box inside a page or form for problems that aren't about a single
+field: the server is unavailable, too many attempts, a suspended account.
+Field problems stay on their fields; passing notices are toasts.
+
+## Usage
+
+```tsx
+const problem = describeError(error);
+<InlineAlert
+  title="We couldn't sign you in"
+  reference={problem.reference}
+  action={<Button onClick={retry}>Try again</Button>}
+>
+  {problem.message}
+</InlineAlert>;
+```
+
+## Behavior
+
+- `role="alert"`, so screen readers announce it when it appears.
+- `reference` (the request id of a server error) is shown small and
+  selectable: users can quote it, developers find the request in the logs
+  with it. Leave it out for anything that isn't a server error.
+- Colour is never the only signal: the icon and text carry the meaning.
+
+## Props
+
+<ArgTypes of={InlineAlertStories} />
+
+## Stories
+
+<Canvas of={InlineAlertStories.ServerError} />
+
+<Stories includePrimary={false} />

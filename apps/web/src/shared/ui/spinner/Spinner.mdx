@@ -1,0 +1,21 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SpinnerStories from './Spinner.stories';
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+Indeterminate loading indicator. Renders inside a `role="status"` region with
+a visually hidden `label`, so screen readers announce what is loading.
+
+## Usage
+
+```tsx
+<Spinner label="Loading events" />
+```
+
+## Props
+
+<ArgTypes of={SpinnerStories} />
+
+<Stories />

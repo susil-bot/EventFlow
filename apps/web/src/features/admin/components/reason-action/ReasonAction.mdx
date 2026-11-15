@@ -1,0 +1,25 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ReasonActionStories from './ReasonAction.stories';
+
+<Meta of={ReasonActionStories} />
+
+# ReasonAction
+
+A destructive admin action that requires a written reason. The reason is
+sent to the API and stored in the admin audit log.
+
+## Usage
+
+```tsx
+<ReasonAction
+  label="Suspend"
+  confirmLabel="Suspend account"
+  onConfirm={(reason) => suspend(user.id, reason)}
+/>
+```
+
+## Props
+
+<ArgTypes of={ReasonActionStories} />
+
+<Stories />

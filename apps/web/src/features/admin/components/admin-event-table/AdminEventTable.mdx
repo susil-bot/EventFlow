@@ -1,0 +1,14 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as AdminEventTableStories from './AdminEventTable.stories';
+
+<Meta of={AdminEventTableStories} />
+
+# AdminEventTable
+
+Every event on the platform, drafts included. Admins can cancel any event
+that isn't already canceled; the reason is shown to registered attendees and
+stored in the audit log.
+
+<ArgTypes of={AdminEventTableStories} />
+
+<Stories />

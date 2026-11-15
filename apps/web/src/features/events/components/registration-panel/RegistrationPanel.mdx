@@ -1,0 +1,50 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as RegistrationPanelStories from './RegistrationPanel.stories';
+
+<Meta of={RegistrationPanelStories} />
+
+# RegistrationPanel
+
+The registration card on the event detail page. It is presentational: the
+page passes the event, the viewer, their registration (if any) and the
+mutation callbacks.
+
+## Usage
+
+```tsx
+<RegistrationPanel
+  event={event}
+  viewer={user}
+  registration={myRegistration}
+  onRegister={() => register.mutate(event.id)}
+  onCancelRegistration={(id) => cancel.mutate(id)}
+  isRegistering={register.isPending}
+/>
+```
+
+## Behavior
+
+Resolved in this order so the most relevant message wins:
+
+1. Viewer holds an active registration → "You're registered" + cancel
+   (hidden once the event started or was canceled).
+2. Event canceled / draft / started / full → explanatory message, no action.
+3. Signed out → "Sign in to register".
+4. Organizer → owner sees "View registrations"; others are told to use an
+   attendee account.
+5. Attendee → "Register now".
+
+The UI state is a convenience only — the API enforces every rule and its
+error message is shown in a toast if the state was stale.
+
+## Props
+
+<ArgTypes of={RegistrationPanelStories} />
+
+## Stories
+
+<Canvas of={RegistrationPanelStories.OpenForAttendee} />
+<Canvas of={RegistrationPanelStories.Registered} />
+<Canvas of={RegistrationPanelStories.Full} />
+
+<Stories includePrimary={false} />

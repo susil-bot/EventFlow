@@ -1,0 +1,75 @@
+# EventFlow with Docker.
+#
+#   docker compose up --build        whole app on http://localhost:8080
+#   npm run db:up                    only Postgres, for `npm run dev`
+#
+# Nothing here is a real secret: the database password only works inside
+# this local setup, and JWT_SECRET is generated on first start unless you
+# pass one (see README › Run with Docker).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: event-management-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: events_dev
+    ports:
+      # For `npm run dev` on the host. Change POSTGRES_PORT if 5432 is taken.
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./apps/api/src/db/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d events_dev']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      target: api
+    image: eventflow-api
+    init: true
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/events_dev
+      # Optional: pass your own (>= 32 chars); otherwise one is generated
+      # and kept in the api-secrets volume.
+      JWT_SECRET: ${JWT_SECRET:-}
+      CLIENT_ORIGIN: http://localhost:${WEB_PORT:-8080}
+      # nginx in front: read the client IP from X-Forwarded-For.
+      TRUST_PROXY: '1'
+      # Plain HTTP on localhost; set true when serving over HTTPS.
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      # Load the demo accounts and events into an empty database.
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      # Sign-in/sign-up attempts per IP per 15 minutes (raise for load checks).
+      AUTH_RATE_LIMIT_MAX: ${AUTH_RATE_LIMIT_MAX:-20}
+    volumes:
+      - uploads:/app/apps/api/uploads
+      - api-secrets:/app/secrets
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      target: web
+    image: eventflow-web
+    restart: unless-stopped
+    ports:
+      - '${WEB_PORT:-8080}:8080'
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  uploads:
+  api-secrets:

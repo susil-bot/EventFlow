@@ -1,0 +1,35 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as VenueLocationFieldStories from './VenueLocationField.stories';
+
+<Meta of={VenueLocationFieldStories} />
+
+# VenueLocationField
+
+The map pin in the event form's **Location & tickets** section, shown for
+in-person and hybrid events.
+
+1. The search box starts with the venue and city; **Find** (or Enter) looks
+   the address up with OpenStreetMap Nominatim. Enter never submits the
+   event form.
+2. Picking a match drops the pin there; the organizer can then drag it, or
+   click the map, to put it on the entrance.
+3. **Remove pin** clears it.
+
+Rules:
+
+- A pin is optional for drafts and **required to publish** an in-person or
+  hybrid event. The form checks this when publishing; the API enforces it
+  (`400`, field `venueLocation`), including on the publish endpoint, and a
+  published event can't lose its pin.
+- Searching is an explicit action, at most one request at a time (a newer
+  search aborts the older one), which keeps within Nominatim's usage policy.
+  Only the typed text is sent; there's no API key.
+- If the search finds nothing or is unavailable, the organizer can still
+  click the map, so the field never blocks publishing on a third-party
+  service.
+
+Stories use canned results (`search` prop), so they never call Nominatim.
+
+<ArgTypes of={VenueLocationFieldStories} />
+
+<Stories />

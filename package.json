@@ -1,0 +1,61 @@
+{
+  "name": "event-management-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Event management MVP: organizers publish events, attendees discover and register.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "npm run migrate -w apps/api",
+    "db:seed": "npm run seed -w apps/api",
+    "db:reset": "npm run reset -w apps/api",
+    "docker:up": "docker compose up --build --detach --wait",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs --follow api web",
+    "docker:reset": "docker compose down --volumes",
+    "docker:smoke": "bash scripts/docker-smoke.sh",
+    "dev": "run-p dev:*",
+    "dev:api": "npm run dev -w apps/api",
+    "dev:web": "npm run dev -w apps/web",
+    "build": "npm run build -w apps/api && npm run build -w apps/web",
+    "test": "npm run test -w apps/api && npm run test -w apps/web",
+    "test-api": "npm run test -w apps/api",
+    "test-web": "npm run test -w apps/web",
+    "verify:concurrency": "npm run verify:concurrency -w apps/api",
+    "lint": "oxlint",
+    "typecheck": "npm run typecheck -w apps/api && npm run typecheck -w apps/web",
+    "oxfmt": "oxfmt --write --ignore-path .oxfmtignore '**/*.{ts,tsx,js,jsx,json,md}'",
+    "test-oxfmt": "oxfmt --check --ignore-path .oxfmtignore '**/*.{ts,tsx,js,jsx,json,md}'",
+    "storybook": "npm run storybook -w apps/web",
+    "prepare": "husky",
+    "setup:local": "bash scripts/setup-local.sh",
+    "admin:create": "npm run admin:create -w apps/api --"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "npm-run-all2": "^8.0.4",
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0"
+  },
+  "overrides": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "oxlint",
+      "oxfmt --write"
+    ],
+    "*.{json,md}": [
+      "oxfmt --write"
+    ]
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.13.0"
+  }
+}

@@ -1,0 +1,20 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EditorHeaderStories from './EditorHeader.stories';
+
+<Meta of={EditorHeaderStories} />
+
+# EditorHeader
+
+Top of the event editor, modelled on a CMS article header:
+
+- **Edit event** in the display serif (or **Create event** for a new one).
+- "Last modified on 13 November 2026 at 13:41 by Olivia Organizer", in the
+  viewer's local time. "By" comes from `lastEditedBy`, which the API only
+  sends to the organizer and admins.
+- A status row: the phase chip (Draft, Scheduled, Live…), the start in the
+  event's own time zone, the registration count (a link to the attendee
+  list for the organizer) and **View event page**, which opens in a new tab.
+
+<ArgTypes of={EditorHeaderStories} />
+
+<Stories />

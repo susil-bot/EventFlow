@@ -1,0 +1,25 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as BackLinkStories from './BackLink.stories';
+
+<Meta of={BackLinkStories} />
+
+# BackLink
+
+"← Back" at the top of a page. It behaves like the browser's Back button,
+which is what people expect from it:
+
+- Came from another page of the app → goes back there (`navigate(-1)`), so
+  the editor, a filtered Discover list or the dashboard comes back as it was,
+  scroll position included.
+- Opened directly (bookmark, new tab, shared link) → goes to `fallback`, the
+  page's natural parent, instead of leaving the app.
+- It is a real link to `fallback`, so Cmd/Ctrl-click and middle-click still
+  open that page in a new tab.
+
+Use it instead of a hard-coded "← Dashboard" link when a page can be reached
+from more than one place (e.g. the attendee list, from the dashboard or from
+the editor).
+
+<ArgTypes of={BackLinkStories} />
+
+<Stories />

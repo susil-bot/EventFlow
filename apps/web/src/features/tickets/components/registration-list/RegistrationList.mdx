@@ -1,0 +1,20 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as RegistrationListStories from './RegistrationList.stories';
+
+<Meta of={RegistrationListStories} />
+
+# RegistrationList
+
+Attendee dashboard list. Splits registrations into **Upcoming** (active) and
+**Canceled** sections, satisfying "canceled registrations are clearly
+distinguished".
+
+## Props
+
+<ArgTypes of={RegistrationListStories} />
+
+## Stories
+
+<Canvas of={RegistrationListStories.Mixed} />
+
+<Stories includePrimary={false} />

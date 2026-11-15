@@ -1,0 +1,20 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as AdminUserTableStories from './AdminUserTable.stories';
+
+<Meta of={AdminUserTableStories} />
+
+# AdminUserTable
+
+User directory for admins. Actions depend on the account:
+
+- **Awaiting approval** organizers: Approve, Suspend.
+- **Active** users: switch between organizer and attendee, Suspend.
+- **Suspended** users: Reactivate.
+- **Admins** (including yourself): no actions; admins are managed with the CLI.
+
+The API enforces the same rules (and refuses role changes that would strand
+events or registrations); the table only offers what makes sense.
+
+<ArgTypes of={AdminUserTableStories} />
+
+<Stories />

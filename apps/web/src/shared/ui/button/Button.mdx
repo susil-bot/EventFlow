@@ -1,0 +1,35 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Primary action control. `LinkButton` renders a router `Link` with the same
+styles for navigation.
+
+## Usage
+
+```tsx
+<Button onClick={save} isLoading={isSaving}>Save</Button>
+<LinkButton to="/organizer/events/new">Add Event</LinkButton>
+```
+
+## Behavior
+
+- `isLoading` shows a spinner, sets `aria-busy` and disables the button so a
+  mutation cannot be submitted twice.
+- Defaults to `type="button"`; pass `type="submit"` inside forms.
+- Variant styling uses transient props (`$variant`, `$size`) so nothing
+  leaks to the DOM.
+
+## Props
+
+<ArgTypes of={ButtonStories} />
+
+## Stories
+
+<Canvas of={ButtonStories.Variants} />
+<Canvas of={ButtonStories.Loading} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,24 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ToastStackStories from './ToastStack.stories';
+
+<Meta of={ToastStackStories} />
+
+# ToastStack
+
+Bottom-right notification stack used for mutation success and error messages.
+Errors use `role="alert"`; others use `role="status"`. Use the `useToast()`
+hook from `ToastProvider` instead of rendering this directly.
+
+## Usage
+
+```tsx
+const toast = useToast();
+toast.success("You're registered!");
+toast.error(getErrorMessage(error));
+```
+
+## Props
+
+<ArgTypes of={ToastStackStories} />
+
+<Stories />

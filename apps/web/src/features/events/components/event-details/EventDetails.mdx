@@ -1,0 +1,38 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EventDetailsStories from './EventDetails.stories';
+
+<Meta of={EventDetailsStories} />
+
+# EventDetails
+
+Event detail layout: cover and host on the left; status, title, schedule
+(with time zone), venue, availability, the registration slot, description and
+location on the right. Collapses to one column on small screens.
+
+## Usage
+
+```tsx
+<EventDetails
+  event={event}
+  registrationSlot={<RegistrationPanel {...panelProps} />}
+/>
+```
+
+## Behavior
+
+- Date and time are formatted in the **event's** time zone and the zone name
+  is always shown, so attendees in other zones are not misled.
+- The description preserves line breaks.
+- **Location** shows the venue on an OpenStreetMap map (`VenueMap`) with a
+  "Get directions" link when the event has a map pin. Events without a pin
+  (and online events) show the venue as text only.
+
+## Props
+
+<ArgTypes of={EventDetailsStories} />
+
+## Stories
+
+<Canvas of={EventDetailsStories.Published} />
+
+<Stories includePrimary={false} />

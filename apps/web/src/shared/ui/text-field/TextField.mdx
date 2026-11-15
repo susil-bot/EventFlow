@@ -1,0 +1,38 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as TextFieldStories from './TextField.stories';
+
+<Meta of={TextFieldStories} />
+
+# TextField
+
+Labelled text input. Pass `multiline` to render a `<textarea>`.
+
+## Usage
+
+```tsx
+<TextField
+  label="Capacity"
+  type="number"
+  value={capacity}
+  onChange={(event) => setCapacity(event.target.value)}
+  error={errors.capacity}
+  required
+/>
+```
+
+## Accessibility
+
+- The label is tied to the control with `htmlFor`/`id` (auto-generated with
+  `useId` when no `id` is passed).
+- `hint` and `error` are linked through `aria-describedby`; `aria-invalid` is
+  set when there is an error.
+
+## Props
+
+<ArgTypes of={TextFieldStories} />
+
+## Stories
+
+<Canvas of={TextFieldStories.WithError} />
+
+<Stories includePrimary={false} />

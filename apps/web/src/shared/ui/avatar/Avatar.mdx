@@ -1,0 +1,21 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as AvatarStories from './Avatar.stories';
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+Initials avatar with a deterministic colour derived from the name. Decorative
+(`aria-hidden`) — always render the person's name next to it.
+
+## Usage
+
+```tsx
+<Avatar name={event.organizerName} />
+```
+
+## Props
+
+<ArgTypes of={AvatarStories} />
+
+<Stories />

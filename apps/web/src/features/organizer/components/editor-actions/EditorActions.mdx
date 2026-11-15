@@ -1,0 +1,28 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EditorActionsStories from './EditorActions.stories';
+
+<Meta of={EditorActionsStories} />
+
+# EditorActions
+
+The event editor's action bar: **···** (more actions) · **Preview** ·
+**Save** · **Publish** · **Close**.
+
+- The buttons sit outside the `<form>` and submit it through the `form`
+  attribute (`formId`). Each carries its intent (`draft`, `save`,
+  `publish`) as the button value, which the form reads from the submitter.
+- **Save** is disabled until the form has changes (`isDirty`). A new event
+  can always be saved as a draft.
+- Drafts get **Publish…**, which opens the Publish dialog (`onPublish`)
+  rather than publishing at once; it reads **Schedule…** when a go-live
+  time is set. Published events only offer **Save changes**.
+- **Preview** opens the event page in a new tab; it is disabled until the
+  event has been saved once.
+- **Close** calls `onExit`; the page asks before discarding unsaved
+  changes.
+- On wide screens the editor keeps the bar in view under the site header;
+  on phones it docks to the bottom of the screen.
+
+<ArgTypes of={EditorActionsStories} />
+
+<Stories />

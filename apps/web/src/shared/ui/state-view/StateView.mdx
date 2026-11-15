@@ -1,0 +1,43 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as StateViewStories from './StateView.stories';
+
+<Meta of={StateViewStories} />
+
+# StateView
+
+Single place that renders loading, error and empty states for data views.
+Pages pass query state in and their content as children.
+
+## Usage
+
+```tsx
+const { data, isLoading, error, refetch } = usePublicEvents();
+
+<StateView
+  isLoading={isLoading}
+  error={error}
+  onRetry={refetch}
+  isEmpty={data?.length === 0}
+  emptyTitle="No upcoming events"
+>
+  <EventGrid events={data} />
+</StateView>;
+```
+
+## Behavior
+
+- Priority: loading → error → empty → children.
+- Errors render in a `role="alert"` region with the API's message and an
+  optional retry button.
+
+## Props
+
+<ArgTypes of={StateViewStories} />
+
+## Stories
+
+<Canvas of={StateViewStories.Loading} />
+<Canvas of={StateViewStories.ErrorState} />
+<Canvas of={StateViewStories.Empty} />
+
+<Stories includePrimary={false} />

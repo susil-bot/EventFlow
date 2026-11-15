@@ -1,0 +1,30 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EventMetaRowStories from './EventMetaRow.stories';
+
+<Meta of={EventMetaRowStories} />
+
+# EventMetaRow
+
+Icon tile + two text lines, used on the event detail page for the schedule
+and the venue.
+
+## Usage
+
+```tsx
+<EventMetaRow icon="pin" primary={event.venue} secondary="Venue" />
+<EventMetaRow
+  leading={<DateBadge {...getDateBadgeParts(event)} />}
+  primary={formatEventDay(event)}
+  secondary={formatEventTime(event)}
+/>
+```
+
+## Props
+
+<ArgTypes of={EventMetaRowStories} />
+
+## Stories
+
+<Canvas of={EventMetaRowStories.DateWithBadge} />
+
+<Stories includePrimary={false} />

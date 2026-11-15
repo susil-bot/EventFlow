@@ -1,0 +1,21 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as CapacityMeterStories from './CapacityMeter.stories';
+
+<Meta of={CapacityMeterStories} />
+
+# CapacityMeter
+
+Shows how many places are taken. Exposed as `role="meter"` with a readable
+`aria-valuetext`. Turns amber at 80% and red when full.
+
+## Usage
+
+```tsx
+<CapacityMeter registered={event.registeredCount} capacity={event.capacity} />
+```
+
+## Props
+
+<ArgTypes of={CapacityMeterStories} />
+
+<Stories />

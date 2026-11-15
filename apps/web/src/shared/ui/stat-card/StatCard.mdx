@@ -1,0 +1,24 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as StatCardStories from './StatCard.stories';
+
+<Meta of={StatCardStories} />
+
+# StatCard
+
+Headline metric tile for the organizer dashboard.
+
+## Usage
+
+```tsx
+<StatCard label="Active registrations" value={totals.registered} icon="users" />
+```
+
+## Props
+
+<ArgTypes of={StatCardStories} />
+
+## Stories
+
+<Canvas of={StatCardStories.Row} />
+
+<Stories includePrimary={false} />

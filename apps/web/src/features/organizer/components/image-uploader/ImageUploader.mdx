@@ -1,0 +1,27 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as ImageUploaderStories from './ImageUploader.stories';
+
+<Meta of={ImageUploaderStories} />
+
+# ImageUploader
+
+Uploads, reorders and removes an event's promo images. The first image is the
+cover shown on cards and the event page.
+
+## Behavior
+
+- Accepts JPG, PNG and WebP up to the size limit; other files show an inline
+  error and are not uploaded. The API re-checks the real file type.
+- Uploading is delegated to `onUpload` so the pattern never calls the API.
+- Arrow buttons move an image earlier or later; the trash button removes it.
+- Supports drag and drop as well as the file picker.
+
+## Props
+
+<ArgTypes of={ImageUploaderStories} />
+
+## Stories
+
+<Canvas of={ImageUploaderStories.WithImages} />
+
+<Stories includePrimary={false} />

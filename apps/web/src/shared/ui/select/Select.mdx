@@ -1,0 +1,27 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+The app's dropdown: a square outlined control with a chevron that opens a
+list below it. Rows are separated by hairlines and the highlighted row is
+grey, matching the editorial reference. A native `<select>` can't style its
+open menu, so this is a custom
+[select-only combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/):
+
+- `role="combobox"` on the trigger and `role="listbox"`/`option` on the
+  list, with `aria-activedescendant` for the highlighted row.
+- Keyboard: ↓/↑ open and move, Home/End, Enter or Space to pick, Escape to
+  close, Tab picks and moves on, and typing jumps to a matching option
+  (handy for the long time-zone list).
+- Clicking outside closes it; focus stays on the trigger.
+- `onChange` receives `{ target: { value } }`, so it drops in where a
+  native select was used. Pass `name` to submit the value in a form.
+
+Use `SelectField` for a labelled field with hint and error text.
+
+<ArgTypes of={SelectStories} />
+
+<Stories />

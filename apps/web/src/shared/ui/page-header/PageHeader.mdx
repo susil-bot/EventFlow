@@ -1,0 +1,19 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as PageHeaderStories from './PageHeader.stories';
+
+<Meta of={PageHeaderStories} />
+
+# PageHeader
+
+Page title (`h1`) with optional eyebrow, description and actions such as
+"Add Event".
+
+## Props
+
+<ArgTypes of={PageHeaderStories} />
+
+## Stories
+
+<Canvas of={PageHeaderStories.WithAction} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,31 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as IconStories from './Icon.stories';
+
+<Meta of={IconStories} />
+
+# Icon
+
+Stroke-based inline SVG icon set. Icons inherit `currentColor`, so colour is
+controlled by the parent.
+
+## Usage
+
+```tsx
+<Icon name="calendar" />
+<Icon name="alert" title="Error" />
+```
+
+## Accessibility
+
+- Decorative by default (`aria-hidden`).
+- Pass `title` when the icon is the only content conveying meaning.
+
+## Props
+
+<ArgTypes of={IconStories} />
+
+## Stories
+
+<Canvas of={IconStories.AllIcons} />
+
+<Stories includePrimary={false} />

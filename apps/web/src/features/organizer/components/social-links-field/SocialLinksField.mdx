@@ -1,0 +1,25 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SocialLinksFieldStories from './SocialLinksField.stories';
+
+<Meta of={SocialLinksFieldStories} />
+
+# SocialLinksField
+
+Lets organizers add links to the event's website and social profiles.
+
+## Behavior
+
+- Each platform can be added once; the platform list only offers unused ones.
+- Links must be `https://`. The API also checks that a platform link points
+  at that platform (a LinkedIn link must be on linkedin.com).
+- Errors use the API's field keys, e.g. `socialLinks.0.url`.
+
+## Props
+
+<ArgTypes of={SocialLinksFieldStories} />
+
+## Stories
+
+<Canvas of={SocialLinksFieldStories.WithLinks} />
+
+<Stories includePrimary={false} />

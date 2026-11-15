@@ -1,0 +1,60 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as EventFormStories from './EventForm.stories';
+
+<Meta of={EventFormStories} />
+
+# EventForm
+
+Create/edit form for events. It owns field state and client validation only;
+the page performs the mutation.
+
+## Usage
+
+```tsx
+<EventForm
+  mode="create"
+  serverErrors={fieldErrorsFrom(mutation.error)}
+  submittingIntent={mutation.isPending ? intent : undefined}
+  onSubmit={(input, intent) =>
+    createEvent({ ...input, publish: intent === 'publish' })
+  }
+/>
+```
+
+## Sections
+
+1. **Basics**: title, description, type, category and page address.
+2. **Date & time**: start time (or time slots) and time zone, then
+   **Listing in Discover**: when it goes live (when you publish, or at a set
+   time) and when the listing ends (when the event starts, or earlier). One
+   line under it sums up the window and the time zone. The rules live in
+   `schedule.ts` and are shared with the Publish dialog.
+3. **Location & tickets**: city, venue and map pin or meeting link,
+   capacity and price.
+4. **Images** and **Links**.
+
+## Behavior
+
+- Create mode offers **Save as draft** and **Publish event**; edit mode offers
+  **Save changes** (status changes happen from the dashboard).
+- Start time is entered as wall-clock time plus an IANA time zone, which is
+  how the API stores and validates it.
+- `minCapacity` (active registrations) blocks reducing capacity below the
+  number of people already registered; the API enforces the same rule
+  atomically.
+- Server field errors (`error.details.fields`) are displayed inline; editing a
+  field clears its client error.
+- In-person and hybrid events get a **map pin** (`VenueLocationField`):
+  optional for a draft, required to publish. An unchanged pin is left out of
+  an edit, so older events without one can still be saved.
+
+## Props
+
+<ArgTypes of={EventFormStories} />
+
+## Stories
+
+<Canvas of={EventFormStories.Edit} />
+<Canvas of={EventFormStories.WithServerErrors} />
+
+<Stories includePrimary={false} />

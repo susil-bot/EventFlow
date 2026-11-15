@@ -1,0 +1,25 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+Small status label for event status, availability and registration state.
+Colour is never the only signal: the text always states the status.
+
+## Usage
+
+```tsx
+<Badge tone="danger">Canceled</Badge>
+```
+
+## Props
+
+<ArgTypes of={BadgeStories} />
+
+## Stories
+
+<Canvas of={BadgeStories.Tones} />
+
+<Stories includePrimary={false} />

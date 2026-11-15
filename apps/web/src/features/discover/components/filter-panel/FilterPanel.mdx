@@ -1,0 +1,19 @@
+import { ArgTypes, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as FilterPanelStories from './FilterPanel.stories';
+
+<Meta of={FilterPanelStories} />
+
+# FilterPanel
+
+Left-hand Discover filters, in collapsible sections that each have a Clear
+button: Categories (with event counts), Date, Format, Price and Location
+(distance from the city, and whether to include online events).
+
+Every click calls `onChange` straight away; the page turns that into a new
+URL, so there is no Search button. Categories with no events are disabled
+unless already selected. On small screens the page shows the same panel in
+a drawer.
+
+<ArgTypes of={FilterPanelStories} />
+
+<Stories />

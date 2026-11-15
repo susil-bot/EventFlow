@@ -1,0 +1,28 @@
+import { ArgTypes, Canvas, Meta, Stories } from '@storybook/addon-docs/blocks';
+import * as SlotsFieldStories from './SlotsField.stories';
+
+<Meta of={SlotsFieldStories} />
+
+# SlotsField
+
+Optional time slots (sessions) for an event, each with its own seats.
+
+## Behavior
+
+- With no slots the event is a single session with its own start time and
+  capacity.
+- With slots, the event's capacity is the total of the slot seats and it
+  starts with the earliest slot. Attendees pick a slot when they register.
+- `locked` disables editing once people have registered (the API rejects
+  slot changes then).
+- Errors use the API's field keys, e.g. `slots.0.capacity`.
+
+## Props
+
+<ArgTypes of={SlotsFieldStories} />
+
+## Stories
+
+<Canvas of={SlotsFieldStories.TwoSlots} />
+
+<Stories includePrimary={false} />
